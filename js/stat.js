@@ -1,8 +1,5 @@
 'use strict';
 
-// var canvas = document.getElementById('canvas');
-// var ctx = canvas.getContext('2d');
-
 var CLOUD_WIDTH = 500;
 var CLOUD_HEIGHT = 230;
 var CLOUD_X = 100;
@@ -12,7 +9,6 @@ var FONT_GAP = 40;
 var TEXT_HEIGHT = 20;
 var TEXT_GAP = 255;
 var COLUM_WIDTH = 40;
-
 
 var renderCloud = function (ctx, x, y, color) {
   ctx.fillStyle = color;
