@@ -43,11 +43,21 @@ window.renderStatistics = function (ctx, names, times) {
     ctx.fillText(names[i], (CLOUD_X + FONT_GAP) + (COLUM_WIDTH * i + GAP * 5 * i), TEXT_GAP);
     var randomOpacity = Math.random();
     ctx.fillStyle = 'rgba(3, 37, 144,' + randomOpacity + ')';
-    ctx.fillRect(CLOUD_X + FONT_GAP + (COLUM_WIDTH * i + GAP * 5 * i), FONT_GAP + TEXT_HEIGHT * 2 + GAP * 2, COLUM_WIDTH, CLOUD_Y * 3 * times[i] / maxTime);
+    
 
     if (names[i] === 'Вы') {
       ctx.fillStyle = 'red';
-      ctx.fillRect(CLOUD_X + FONT_GAP + (COLUM_WIDTH * i + GAP * 5 * i), FONT_GAP + TEXT_HEIGHT * 2 + GAP * 2, COLUM_WIDTH, CLOUD_Y * 3 * times[i] / maxTime);
     }
+
+    var columnHeight = CLOUD_Y * 3 * times[i] / maxTime; // Вот такие вещи нужно выносить в переменные, так как читая формулу, вообще не понятно ее предназначение
+    // Так же все магические числа нужно выносить в переменные, например число 3 в предыдущей строке, вообще не понятно почему 3, для чего оно
+    var columntYPosition = TEXT_GAP - columnHeight - GAP;
+    // Тоже самое касается числа 5 при расчете ширины, ну и собственно всю формулу расчета ширины лучше вынести так же как я вынес высоту
+
+    ctx.fillRect(CLOUD_X + FONT_GAP + (COLUM_WIDTH * i + GAP * 5 * i), columntYPosition, COLUM_WIDTH, columnHeight);
+
+    // Отображаем статистику
+    ctx.fillStyle = 'black';
+    ctx.fillText(Math.round(times[i]), (CLOUD_X + FONT_GAP) + (COLUM_WIDTH * i + GAP * 5 * i), 100);
   }
 };
