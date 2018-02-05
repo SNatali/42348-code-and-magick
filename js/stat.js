@@ -1,4 +1,4 @@
- 'use strict';
+'use strict';
 
 var WHITE_COLOR = '#fff';
 var BLACK_COLOR = '#000';
